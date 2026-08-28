@@ -8,6 +8,29 @@ class Solution:
             return 1
         f = [0,1,1]
         for i in range(3,n+1):
-            f.append(f[i-1]+f[i-2]+f[i-3])
-        print(f)
-        return f[n]
+            f.append(f[0]+f[1]+f[2])
+            f.pop(0)
+        return f[2]
+
+or 
+
+class Solution:
+    def tribonacci(self, n: int) -> int:        
+        if n ==0:
+            return 0
+        if n == 1:
+            return 1
+        if n == 2:
+            return 1
+        if n == 3:
+            return 2
+        else:
+            tn = 0
+            tn1 = 1
+            tn2 = 1
+            for _ in range(3,n+1):
+                tn3 = tn+tn1+tn2
+                tn=tn1
+                tn1=tn2
+                tn2=tn3
+            return tn3
